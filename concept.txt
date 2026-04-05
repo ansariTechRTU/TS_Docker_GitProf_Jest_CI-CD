@@ -1,0 +1,6 @@
+STATIC Checking
+
+TYPESAFETY
+
+
+declaring -> let greeting: string = "Hello";
