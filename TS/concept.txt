@@ -11,3 +11,4 @@ default return type
 //if no return needed in func
 void
 never
+
