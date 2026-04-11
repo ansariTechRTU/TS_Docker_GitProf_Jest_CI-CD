@@ -4,3 +4,10 @@ TYPESAFETY
 
 
 declaring -> let greeting: string = "Hello";
+
+default values
+default return type
+
+//if no return needed in func
+void
+never
