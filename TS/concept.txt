@@ -12,3 +12,15 @@ default return type
 void
 never
 
+
+//to setup config
+tsc --init 
+
+
+//to point that we have to use this put js file genrated from Ts file
+in config file --> "outDir": "./dist"
+
+
+
+//
+tsc -w
