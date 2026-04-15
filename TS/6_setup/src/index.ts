@@ -1,6 +1,7 @@
 class User {
      
-    private course_count =1
+    // private course_count =1
+    protected course_count =1
 
     public email: string
     name: string
@@ -30,6 +31,20 @@ class User {
 
 
 }
+
+class SubUser extends User {    //but here private things from User can not be accessed
+          
+    isFamily: boolean = true
+
+    changeCourseCount(){
+        this.course_count =4      //private initially  but with "protected" it will be accessible within class & their extended ones
+    }
+}
+
+
+
+
+
 const myself = new User("me@mail.com" , "ansari")
 console.log(myself)
 
