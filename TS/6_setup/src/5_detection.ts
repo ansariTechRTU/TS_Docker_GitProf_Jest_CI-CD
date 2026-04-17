@@ -51,3 +51,37 @@ function isAdminAccount(account: User | admin){
 
 
 
+
+
+function logValue(x: Date | string) {
+  if (x instanceof Date) {
+    console.log(x.toUTCString());
+               
+  } else {
+    console.log(x.toUpperCase());
+                
+  }
+}
+
+
+
+
+
+type Fish = {swim: () => void}
+type Bird = {fly: () => void}
+
+function isFish( pet: Fish | Bird ): pet is Fish{   //if not pet is fish -> then in next func still not confirmed  what it is
+    return (pet as Fish).swim !== undefined
+} 
+
+
+function getFood(pet: Fish | Bird){
+    if(isFish(pet)){
+        pet
+        return "fish food"
+
+    }else {
+        pet 
+        return "bird food"
+    }
+}
