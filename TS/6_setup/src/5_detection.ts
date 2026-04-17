@@ -85,3 +85,39 @@ function getFood(pet: Fish | Bird){
         return "bird food"
     }
 }
+
+
+
+
+
+
+
+
+
+//Discriminatted Union
+
+interface Circle {
+  kind: "circle";
+  radius: number;
+}
+ 
+interface Square {
+  kind: "square";
+  sideLength: number;
+}
+ 
+type Shape = Circle | Square;
+
+
+function getArea(shape: Shape) {
+  return Math.PI * shape.radius ** 2;
+
+}
+
+
+function getArea(shape: Shape) {
+  if (shape.kind === "circle") {
+    return Math.PI * shape.radius ** 2;
+                    
+  }
+}
