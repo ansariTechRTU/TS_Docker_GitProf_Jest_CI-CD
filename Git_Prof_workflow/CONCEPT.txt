@@ -1,0 +1,73 @@
+//STEP1 
+
+# See what branch you're on
+git branch
+
+# Create a new branch and switch to it
+git checkout -b feat/test-branch
+
+# You're now on feat/test-branch — any commits go here, not main
+git branch   # should show * feat/test-branch
+
+
+Note: The naming convention matters —  like feat/invoice-crud, fix/vat-calculation, chore/add-dockerfile. 
+Always prefix with what type of change it is.
+
+
+
+
+
+
+
+
+
+
+//Step 2: Make some changes on your branch
+
+# Make a small change (create a test file)
+echo "hello from feature branch" > test-feature.txt
+
+# Stage and commit with conventional commit message
+git add test-feature.txt
+git commit -m "feat: add test feature file"
+
+
+
+
+feat: — new feature (add invoice form, create expense API)
+fix: — bug fix (correct VAT rounding)
+chore: — maintenance (add Dockerfile, update dependencies)
+docs: — documentation (update README)
+test: — adding tests (add invoice controller tests)
+style: — visual changes (fix sidebar alignment)
+
+
+
+
+
+
+
+
+
+
+
+//Step 3: Push your branch and open a Pull Request
+
+# Push the branch to GitHub
+git push origin feat/test-branch
+
+
+
+
+
+//Step 4: Merge the PR
+
+On GitHub, click "Merge pull request" → choose "Squash and merge" (this combines all your branch commits into one clean commit on main). 
+Then delete the branch.
+
+# Switch back to main and pull the merged changes
+git checkout main
+git pull origin main
+
+# Delete the local branch (it's merged, you don't need it)
+git branch -d feat/test-branch

@@ -1,0 +1,125 @@
+A merge conflict happens when two branches change the same line in the same file. 
+Git doesn't know which version to keep, so it asks you to decide.
+
+
+
+
+
+
+Create a conflict on purpose:
+
+# Make sure you're on main
+git checkout main
+
+# Create a file
+echo "Hello from main" > greeting.txt
+git add greeting.txt
+git commit -m "feat: add greeting file"
+
+# Now create Branch A and change the file
+git checkout -b feat/branch-a
+echo "Hello from Branch A" > greeting.txt
+git add greeting.txt
+git commit -m "feat: update greeting from branch-a"
+
+# Go back to main
+git checkout main
+
+# Create Branch B from main and change the SAME file
+git checkout -b feat/branch-b
+echo "Hello from Branch B" > greeting.txt
+git add greeting.txt
+git commit -m "feat: update greeting from branch-b"
+
+
+
+
+
+
+
+
+
+
+# Merge branch-a into main first (this works fine — no conflict)
+git checkout main
+git merge feat/branch-a
+
+# Now try merging branch-b into main (CONFLICT!)
+git merge feat/branch-b
+
+
+:>-Git will say: CONFLICT (content): Merge conflict in greeting.txt
+
+
+
+
+
+
+Open greeting.txt — you'll see something like this:
+<<<<<<< HEAD
+Hello from Branch A
+=======
+Hello from Branch B
+>>>>>>> feat/branch-b
+The <<<<<<< HEAD section is what's currently on main (Branch A's version). The >>>>>>> feat/branch-b section is what Branch B wants. The ======= separates them.
+
+
+To resolve: delete the markers and keep what you want. For example, if you want Branch B's version:
+
+Then save the file and complete the merge:
+git add greeting.txt
+git commit -m "fix: resolve merge conflict in greeting.txt"
+
+
+
+
+
+
+
+
+
+
+
+
+//TOOLS
+
+
+(git stash) — you're working on a feature but suddenly need to switch branches (maybe to fix a bug). 
+You can't switch with uncommitted changes. Stash saves them temporarily:
+
+# You're mid-work on feat/invoices, EXAMPLE: boss says "fix this bug now"
+git stash                    # saves your uncommitted work
+git checkout main
+git checkout -b fix/urgent-bug
+# ... fix the bug, commit, PR, merge ...
+git checkout feat/invoices
+git stash pop                # restores your saved work
+
+
+
+
+
+
+(git rebase) — keeps your branch history clean by replaying your commits on top of the latest main:
+
+
+# Your branch is behind main (someone else merged stuff)
+git checkout feat/invoices
+git rebase main
+# Now your branch has all of main's latest changes + your commits on top
+
+
+
+
+
+
+(git reset vs git revert:)
+
+# reset: ERASES the last commit (use only on your own branch, never on main)
+git reset --soft HEAD~1      # undo commit but keep changes staged
+git reset --hard HEAD~1      # undo commit AND delete changes (dangerous)
+
+# revert: creates a NEW commit that undoes a previous one (safe for shared branches)
+git revert abc1234           # creates a new "undo" commit
+
+Rule: use reset on your own feature branches, use revert on main/develop.
