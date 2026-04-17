@@ -1,0 +1,60 @@
+Polishing Git game + setting up MyManager repo
+
+
+
+
+//Interactive rebase — cleaning messy commits before merging your PR.
+
+For example:-
+When working on a feature, commit history often looks like this mess:
+
+feat: add invoice form
+fix: typo in invoice form
+fix: forgot to add validation
+fix: validation actually works now
+chore: remove console.log
+
+
+
+Five commits for one feature — ugly. Before opening PR,
+squash them into one clean commit using interactive rebase:
+
+# Squash last 5 commits into one
+git rebase -i HEAD~5
+
+This opens an editor showing:
+pick abc1111 feat: add invoice form
+pick abc2222 fix: typo in invoice form
+pick abc3333 fix: forgot to add validation
+pick abc4444 fix: validation actually works now
+pick abc5555 chore: remove console.log
+
+Change pick to squash (or just s) on everything except the first one:
+pick abc1111 feat: add invoice form
+s abc2222 fix: typo in invoice form
+s abc3333 fix: forgot to add validation
+s abc4444 fix: validation actually works now
+s abc5555 chore: remove console.log
+
+
+Save and close. Git combines all five into one commit. 
+You get a chance to rewrite the message. 
+Final result — one clean commit: feat: add invoice form with validation. 
+That's what your PR shows.
+
+
+
+
+
+
+
+//USEFUL GIT LOG COMMANDS:
+
+# Clean visual history
+git log --oneline --graph --all
+
+# See last 5 commits, short format
+git log --oneline -5
+
+# See who changed what in a file
+git blame src/server.ts

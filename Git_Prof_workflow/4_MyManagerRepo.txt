@@ -1,0 +1,133 @@
+//MyManager repo.
+
+
+# Create the project folder
+mkdir mymanager
+cd mymanager
+
+# Initialize git
+git init
+
+# Create .gitignore
+
+
+
+
+-----Now commit and push:
+
+git add .gitignore
+git commit -m "chore: initial project setup with gitignore"
+
+# Create repo on GitHub (go to github.com/new, name it "mymanager", DON'T add README)
+# Then connect:
+git remote add origin https://github.com/YOUR_USERNAME/mymanager.git
+git branch -M main
+git push -u origin main   //setting upstream 
+
+# Create develop branch
+git checkout -b develop
+git push -u origin develop
+
+
+
+
+
+
+----Set up branch protection on GitHub:
+Go to your repo → Settings → Branches → Add rule:
+
+Branch name pattern: main
+Check: "Require a pull request before merging"
+Check: "Require status checks to pass" (you'll add CI later)
+
+This means nobody (including you) can push directly to main. Every change goes through a PR. 
+
+
+
+
+
+Your branching strategy for MyManager:
+main          ← production-ready, protected
+  └── develop ← integration branch, PRs merge here
+       ├── feat/auth
+       ├── feat/clients
+       ├── feat/invoices
+       ├── feat/expenses
+       ├── feat/dashboard
+       ├── feat/docker
+       ├── feat/testing
+       └── feat/cicd
+
+
+
+
+
+
+-----------The workflow every time when build a new feature:
+
+git checkout develop
+git pull origin develop
+git checkout -b feat/auth        # create feature branch
+# ... code, commit with conventional messages ...
+git push origin feat/auth        # push to GitHub
+# Open PR: feat/auth → develop   # on GitHub
+# Merge PR (squash and merge)
+# When develop is stable: PR develop → main
+
+
+
+
+
+
+
+
+
+
+
+EXAMPLE README.md
+
+# MyManager
+
+Small business command center — track invoices, expenses, 
+clients, and profitability in one dashboard.
+
+## Tech Stack
+- **Frontend:** React + TypeScript
+- **Backend:** Express + TypeScript + Mongoose
+- **Database:** MongoDB
+- **Auth:** JWT + bcrypt
+- **Testing:** Jest + React Testing Library
+- **DevOps:** Docker + GitHub Actions CI/CD
+
+## Features
+- [ ] Invoice management with VAT calculation
+- [ ] Expense tracking with receipt upload
+- [ ] Client database with payment history
+- [ ] Financial dashboard with charts
+- [ ] P&L reports with CSV export
+- [ ] PDF invoice generation
+
+## Getting Started
+Coming soon...
+
+## License
+MIT
+
+
+
+
+
+
+SOME MORE THINGS:
+
+git cherry-pick — pick a single commit from one branch and apply it to another. Useful but rare. You'll learn it when you need it at work.
+
+git bisect — find which commit introduced a bug by binary searching through history. Very advanced, even senior devs rarely use it.
+
+git submodules — repo inside a repo. Complex, most teams avoid it.
+
+git hooks — scripts that run automatically before commit/push (like auto-linting). Nice but your CI/CD pipeline on Day 12-13 handles this instead.
+
+git tags — marking release versions (v1.0.0). Not relevant until you're actually releasing software.
+
+git worktree — work on two branches simultaneously in separate folders. Niche.
