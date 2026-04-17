@@ -25,3 +25,29 @@ function printAll(strs: string | string[] | null){
         }
     }
 }
+
+
+
+
+
+interface User{
+    name: string,
+    email: string
+}
+
+interface admin{
+    name: string,
+    isAdmin: boolean
+}
+
+function isAdminAccount(account: User | admin){
+    if("isAdmin" in account){
+        return account.isAdmin;
+    }
+}
+
+
+
+
+
+
