@@ -1,0 +1,56 @@
+//DOCKER
+
+
+//portable
+//light weight
+
+
+
+tag in image : is like version or variant of image
+EX- docker pull mysql:8.0
+
+
+
+//Docker Commands
+docker pull IMAGE_NAME
+docker pull IMAGE_NAME:version
+docker images
+docker run -it IMAGE_NAME    
+docker stop CONT_NAME or CONT_ID
+docker start CONT_NAME or CONT_ID
+
+docker ps -a   //for all container list
+docker ps      //only running container list
+
+docker run -d IMAGE_NAME
+docker run --name CONT_NAME -d IMAGE_NAME
+
+
+
+IF WANT to use define env variables : -e
+example: docker run -d -e MYSQL_ROOT_PASSWORD=secret mysql
+
+
+
+
+
+//DOCKER IMAGE LAYER
+
+when we create a new container, a new writable layer (called container layer)
+is added on top of underlying layers.
+
+
+
+
+
+//port binding
+
+
+//host machine and container's port are different
+//but we can bind 
+host port= 8080; container port = 3306
+for ex- docker run -p8080:3306 IMAGE_NAME
+
+
+
+//--->if host's port is bind to one container then we can't bind that to other container
