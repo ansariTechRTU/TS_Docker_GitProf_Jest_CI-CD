@@ -123,6 +123,43 @@ More? mongo-express
 
 
 //usecase
+Developing with Docker
+setting up mongo & mongo-express
+
+
++----------------------+
+|        test app      |
+|                      |
+|    +------------+    |
+|    | server.js  |    |
+|    +------------+    |
+|         |            |
+|         |            |
+|         v            |
++----------------------+
+          |
+          | connects to
+          v
+
++----------------------------------+
+|             Docker               |
+|                                  |
+|    +------------+                |
+|    |   mongo    |                |
+|    +------------+                |
+|          ^                       |
+|          |                       |
+|          v                       |
+|    +------------------+          |
+|    |  mongo-express   |          |
+|    +------------------+          |
+|                                  |
++----------------------------------+
+
+Connections:
+- server.js <--> mongo
+- server.js <--> mongo-express
+- mongo-express <--> mongo
 
 
 
