@@ -54,3 +54,97 @@ for ex- docker run -p8080:3306 IMAGE_NAME
 
 
 //--->if host's port is bind to one container then we can't bind that to other container
+
+
+
+
+//Troubleshooot Commands
+docker logs CONT_ID
+docker exec -it CONT_ID /bin/bash
+docker exec -it CONT_ID /bin/sh
+
+
+
+//docker desktop contains small Linux based VM which helps run our linux based containers 
+
+//difference docker & VM
+VM= virtualize application layer as well as Host OS kernel
+Docker= virtualize only application layer
+
+
+
+
+
+
+//Docker Network
+-docker network ls
+-docker network create NETWORK_NAME
+
+
+//Developing with Docker
+image used in testapp : mongo and mongo-express
+
+//setup for this
+-p 27017:27017
+--name mongo
+--network mongo-network (which i created)
+
+also we have to define some env variables : -e
+    MONGO_INITDB_ROOT_USERNAME: admin
+    MONGO_INITDB_ROOT_PASSWORD: qwerty
+
+
+
+/////--FOR mongo
+C:\Users\abdul>docker run -d ^
+More? -p27017:27017 ^
+More? --name mongo ^
+More? --network mongo-network ^
+More? -e MONGO_INITDB_ROOT_USERNAME=admin ^
+More? -e MONGO_INITDB_ROOT_PASSWORD=qwerty ^
+More? mongo    
+
+/////--FOR mongo-express (for user interface ==== on localhost:8081 -> admin,pass)
+
+C:\Users\abdul>docker run -d ^
+More? -p8081:8081 ^
+More? --name mongo-express ^
+More? --network mongo-network ^
+More? -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin ^
+More? -e ME_CONFIG_MONGODB_ADMINPASSWORD=qwerty ^
+More? -e ME_CONFIG_MONGODB_URL="mongodb://admin:qwerty@mongo:27017"
+ ^
+More? mongo-express
+
+
+
+
+
+
+
+//usecase
+
+
+
+
+
+
+
+
+
+
+
+////DOCKER COMPOSE
+is a tool for defying and running multi-container applications
+
+
+
+
+
+
+
+
+
+
+
+
