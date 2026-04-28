@@ -174,8 +174,12 @@ Connections:
 ////DOCKER COMPOSE
 is a tool for defying and running multi-container applications
 
+docker compose -f fileName.yaml up -d
+docker compose -f filename.yaml down
 
 
+
+.yaml -> Yet Another Markup Language
 
 
 
