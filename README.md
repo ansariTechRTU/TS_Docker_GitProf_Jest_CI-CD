@@ -1,6 +1,6 @@
-#  DOCKER | CI/CD | TS | Jest | Git Professional Workflow
+#  DOCKER | TS | Jest | Git Professional Workflow
 
-This repository contains my hands-on practice, notes, and mini-projects related to **Docker and containerization**. It includes conceptual notes, cheat sheets, and a sample Node.js application to understand Docker workflows in a practical way. Other techs like TS, git workflow are also covered. Now working on ci/cd and jest-testing to complete my stack.
+This repository contains my hands-on practice, notes, and mini-projects related to **Docker and containerization**. It includes conceptual notes, cheat sheets, and a sample Node.js application to understand Docker workflows in a practical way. Other techs like TS, git workflow are also covered. Now working jest-testing to complete my stack.
 
 ---
 
@@ -12,5 +12,5 @@ This repository contains my hands-on practice, notes, and mini-projects related 
 -  Notes + cheat sheets for quick revision
 -  Git Professional workflow notes and implementation
 -  TS basics and implementations
--  CI/CD & Jest - in working
+- Jest - in working
 
